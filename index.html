@@ -136,7 +136,7 @@
                 when = event.start.date;
               }
             //   appendPre(event.summary + ' (' + when + ')')
-              content.innerHTML += '<br><li>' + event.summary + '</li>'
+              content.innerHTML += '<br><li>' + when + ' ---- ' + event.summary + '</li>'
             }
           } else {
             appendPre('No upcoming events found.');
