@@ -136,7 +136,7 @@ gapi.client.calendar.events.list({
     
     function(err) { console.error("Execute error", err); });
 
-    ///// LIST OF CALENDARS YOU ARE SIGNED UP FOR OR WHAT //////
+    ///// CODE COMMUNITY EVENTS //////
 
     gapi.client.calendar.events.list({
         'calendarId': 'code.berlin_crt6693rdcpdrrsjlg7gci4qok@group.calendar.google.com',
@@ -146,21 +146,22 @@ gapi.client.calendar.events.list({
         'maxResults': 8,
         'orderBy': 'startTime'
     }).then(function(response) {
-        var calendars = response.result.items;
-        if (calendars.length > 0) {
-            var calendarContainer = document.querySelector(".calendar-container")
-            calendarContainer.innerHTML += '<h2> the CODE Community calendar events </h2>'
+        var commEvents = response.result.items;
+        if (commEvents.length > 0) {
+            var communityContainer = document.querySelector(".community-container")
+            communityContainer.innerHTML += '<h2> the CODE Community calendar events </h2>'
 
-            for (i = 0; i < calendars.length; i++) {
-                var calendar = calendars[i];
-                var calendarName = calendar.summary;
-                calendarContainer.innerHTML += '<br><li>' + calendar.summary + '</li>'
+            for (i = 0; i < commEvents.length; i++) {
+                var commEvent = commEvents[i];
+                communityContainer.innerHTML += '<br><li>' + commEvent.start.dateTime + ' ---- ' + commEvent.summary + '</li>'
             }
         }
     },
     
     function(err) { console.error("Execute error", err); });
     
+
+    // PUT ANYTHING NEW BELOW THIS LINE
 });
 }
 
